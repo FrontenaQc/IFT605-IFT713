@@ -1,3 +1,5 @@
+//VOUS DEVEZ INSTALLER LES BINDINGS Z-WAVE ET HTTP!!!
+
 //https://www.openhab.org/docs/configuration/things.html
 //Liste de tous les "appareils": https://www.openhab.org/addons/bindings/zwave/doc/things.html
 //Thing <binding_id>:<type_id>:<thing_id> "Label" @ "Location" [ <parameters> ]
@@ -15,12 +17,23 @@ Bridge zwave:serial_zstick:controller "Z-Wave Serial Controller" [
             Type switch_dimmer: dimmerChannel "Mon Dimmer Channel" []
      }
     //https://www.openhab.org/addons/bindings/zwave/thing.html?manufacturer=ge&file=14280_0_0.html
+    //https://ezzwave.com/support/advanced-configuration
     Thing ge_14280_00_000 smart_dimmer "Z-Wave Node 008: ZW3107 / GE 14280 Plug-In Smart Dimmer" @ "Location" [node_id="8"] {
         Channels:
             Type switch_dimmer: dimmerChannel2 "Mon Dimmer Channel" []
      }
+     //https://www.openhab.org/addons/bindings/zwave/thing.html?manufacturer=elexa&file=dmof1_0_0.html
+     Thing elexa_dmof1_00_000 enMonitor "DMOF1 Dome On/Off zwave wall plug for controlling small appliances and lights" @ "Couloir" [node_id="7"]
 }
 
+//https://www.openhab.org/addons/bindings/http/
+Thing http:url:foo "Foo" [
+    baseURL="https://c12d8ac0-c2e4-498e-9922-de32cb19812f.mock.pstmn.io/",
+    headers="key1=value1", "key2=value2", "key3=value3",
+    refresh=15] {
+        Channels:
+         Type string : text "Text" [ stateTransformation="JSONPATH:$.metadata.data" ]
+}
 
 //OBJETS SIMULÉS
 Bridge dummy:bridge:myDummyBridge "Dummy Bridge"{
@@ -30,5 +43,7 @@ Bridge dummy:bridge:myDummyBridge "Dummy Bridge"{
     Thing dummy:device:deshumidificateur "Déshumidificateur" {
     
     }
+    //Radiator control https://www.openhab.org/addons/bindings/zwave/thing.html?manufacturer=aeotec&file=spirit_0_0.html
 
 }
+
