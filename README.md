@@ -19,6 +19,5 @@
 - user: ift605
 - organisation: IFT605
 - Bucket: Projet
-- API Token: IFcpK85FrXpA2Mu1oKBVcxnmcevgCk7Kv-2fybMv-YNYfJbP6a3oUhKmrw1_z2DT_DcOU4yhlMwxttuJ20KR7g==
 - Ajouter InfluxDB dans les addons de OpenHAB
 - Configurer InfluxDB 
