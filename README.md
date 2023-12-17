@@ -10,4 +10,4 @@
 - Supprimer le dossier conf/
 - git init -b main
 - git remote add origin https://github.com/FrontenaQc/IFT605-IFT713.git
-= git pull origin main
+- git pull origin main
