@@ -1,0 +1,25 @@
+//https://www.openhab.org/docs/configuration/things.html
+//Liste de tous les "appareils": https://www.openhab.org/addons/bindings/zwave/doc/things.html
+//Thing <binding_id>:<type_id>:<thing_id> "Label" @ "Location" [ <parameters> ]
+
+//Determine the virtual port that the Z-Stick Gen5 is connected to
+//Windows COM4, voir device manager
+//Linux: dmesg | grep tty, ttyACM0
+//ZW090 Z-Stick Gen5 - Aeotec https://aeotec.freshdesk.com/support/solutions/articles/6000242202
+Bridge zwave:serial_zstick:controller "Z-Wave Serial Controller" [ 
+    port="COM4", controller_softreset="false", controller_master="true", heal_enable="true", security_networkkey="AB CD EF GH IJ KL MN OP QR ST UV WX YZ 12 34" ]
+    {
+    Thing ge_35931_00_000 bulb1 "Z-Wave Node 009: 35931 Enbrighten 60W Dimmable Light Bulb" @ "Location" [node_id="9"]{
+        Channels:
+            Type switch_dimmer: dimmerChannel "Mon Dimmer Channel" []
+     }
+}
+
+
+
+
+
+//INFOS SUR LE MATÉRIEL
+//ezzwave.com/config
+//Enbrighten by JASCO, ge_35931_00_000, Jasco Products Light Bulb https://www.openhab.org/addons/bindings/zwave/thing.html?manufacturer=ge&file=35931_0_0.html
+// Z-Wave Node 009: 35931 Enbrighten 60W Dimmable Light Bulb

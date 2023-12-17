@@ -1,0 +1,14 @@
+//https://next.openhab.org/docs/concepts/items.html#items
+//https://www.openhab.org/docs/configuration/items.html
+//itemtype itemname "labeltext [stateformat]" <iconname> (group1, group2, ...) ["tag1", "tag2", ...] {bindingconfig}
+
+
+//VRAI MATÉRIEL
+Dimmer dimmer {channel="zwave:ge_35931_00_000:controller:bulb1:switch_dimmer"} //Catégorie: DimmableLight
+
+
+
+//MATÉRIEL SIMULÉ
+Switch bulb1 "Lumière 1" <switch>
+
+
