@@ -1,0 +1,6 @@
+sitemap chambre label="Chambre intelligente" {
+    Frame label="Slider Example" {
+        Slider item=SliderItem label="Adjust Value" minValue=0 maxValue=100 step=1
+        Text item=SliderItem label="Selected Value [%d]"
+    }
+}

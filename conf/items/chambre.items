@@ -16,4 +16,5 @@ Switch bulb1 "Lumière 1" <switch>
 
 String MyItem "MyItem" {channel="http:url:foo:text"}
 
+Number SliderItem "Slider Item"
 
