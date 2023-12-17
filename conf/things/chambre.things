@@ -3,6 +3,7 @@
 //https://www.openhab.org/docs/configuration/things.html
 //Liste de tous les "appareils": https://www.openhab.org/addons/bindings/zwave/doc/things.html
 //Thing <binding_id>:<type_id>:<thing_id> "Label" @ "Location" [ <parameters> ]
+//{Channels: Type <channel_type>: <channel_id> "Channel Label" [ Configuration ]}
 
 //Determine the virtual port that the Z-Stick Gen5 is connected to
 //Windows COM4, voir device manager
@@ -10,7 +11,7 @@
 //ZW090 Z-Stick Gen5 - Aeotec https://aeotec.freshdesk.com/support/solutions/articles/6000242202
 Bridge zwave:serial_zstick:controller "Z-Wave Serial Controller" [ 
     port="COM4", controller_softreset="false", controller_master="true", heal_enable="true", security_networkkey="AB CD EF GH IJ KL MN OP QR ST UV WX YZ 12 34" ]
-    {
+{
     //Enbrighten by JASCO, ge_35931_00_000, Jasco Products Light Bulb https://www.openhab.org/addons/bindings/zwave/thing.html?manufacturer=ge&file=35931_0_0.html //ezzwave.com/config
     Thing ge_35931_00_000 bulb1 "Z-Wave Node 009: 35931 Enbrighten 60W Dimmable Light Bulb" @ "Location" [node_id="9"]{
         Channels:
@@ -20,10 +21,20 @@ Bridge zwave:serial_zstick:controller "Z-Wave Serial Controller" [
     //https://ezzwave.com/support/advanced-configuration
     Thing ge_14280_00_000 smart_dimmer "Z-Wave Node 008: ZW3107 / GE 14280 Plug-In Smart Dimmer" @ "Location" [node_id="8"] {
         Channels:
-            Type switch_dimmer: dimmerChannel2 "Mon Dimmer Channel" []
+            Type switch_dimmer: switch_dimmer "Mon Dimmer Channel" []
      }
      //https://www.openhab.org/addons/bindings/zwave/thing.html?manufacturer=elexa&file=dmof1_0_0.html
-     Thing elexa_dmof1_00_000 enMonitor "DMOF1 Dome On/Off zwave wall plug for controlling small appliances and lights" @ "Couloir" [node_id="7"]
+     Thing elexa_dmof1_00_000 enMonitor "DMOF1 Dome On/Off zwave wall plug for controlling small appliances and lights" @ "Couloir" [node_id="7"] {
+        Channels:
+            Type switch_binary: switch_binary "switch"
+     }
+
+    //https://www.openhab.org/addons/bindings/zwave/thing.html?manufacturer=elexa&file=dmms1_0_0.html
+     Thing elexa_dmms1_00_000 motionLightSensor "DMMS1 Dome Z-Wave Plus Motion Detector with Light Sensor and Flexible Magnetic Mount" @ "Location" [node_id="5"] {
+        Channels:
+            //J'ai commenté, car sinon erreur.
+            //Type system:battery-level: battery-level "Battery Level"
+     }
 }
 
 //https://www.openhab.org/addons/bindings/http/
