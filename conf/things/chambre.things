@@ -37,13 +37,15 @@ Bridge zwave:serial_zstick:controller "Z-Wave Serial Controller" [
      }
 }
 
+
+//J'ai créé un Mock server avec Postman et j'ai créé un route qui retourne {"message":"hello"} en json comme body
 //https://www.openhab.org/addons/bindings/http/
 Thing http:url:foo "Foo" [
     baseURL="https://c12d8ac0-c2e4-498e-9922-de32cb19812f.mock.pstmn.io/",
     headers="key1=value1", "key2=value2", "key3=value3",
     refresh=15] {
         Channels:
-         Type string : text "Text" [ stateTransformation="JSONPATH:$.metadata.data" ]
+         Type string : text "Text" [ stateTransformation="JSONPATH:$.message" ]
 }
 
 //OBJETS SIMULÉS
