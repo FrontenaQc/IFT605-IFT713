@@ -4,7 +4,8 @@
 
 
 //VRAI MATÉRIEL
-Dimmer dimmer {channel="zwave:ge_35931_00_000:controller:bulb1:switch_dimmer"} //Catégorie: DimmableLight
+Dimmer dimmer1 {channel="zwave:ge_35931_00_000:controller:bulb1:switch_dimmer"} //Catégorie: DimmableLight
+Dimmer dimmer2 {channel="zwave:ge_14280_00_000:controller:smart_dimmer:switch_dimmer"}
 
 
 
