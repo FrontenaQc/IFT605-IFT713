@@ -38,16 +38,7 @@ Bridge zwave:serial_zstick:controller "Z-Wave Serial Controller" [
 }
 
 
-//J'ai créé un Mock server avec Postman et j'ai créé un route qui retourne {"message":"hello"} en json comme body
-//https://www.openhab.org/addons/bindings/http/
-Thing http:url:foo "Foo" [
-    baseURL="https://c12d8ac0-c2e4-498e-9922-de32cb19812f.mock.pstmn.io/",
-    headers="key1=value1", "key2=value2", "key3=value3",
-    refresh=5000] {
-        Channels:
-         Type string : text "Text" [ stateTransformation="JSONPATH:$.message" ]
-}
-
+//Voir le serveur nodejs dans le dossier serveur-simulation
 Thing http:url:plinthe "Plinthe" [
     baseURL="http://localhost:3000/appareils/0",
     //headers="key1=value1", "key2=value2", "key3=value3",
@@ -64,16 +55,16 @@ Thing http:url:deshumidificateur "Déshumidificateur" [
          Type string : text "niveauHumidite" [ stateTransformation="JSONPATH:$.niveauHumidite" ]
 }
 
-
-//OBJETS SIMULÉS
-Bridge dummy:bridge:myDummyBridge "Dummy Bridge"{
-    Thing dummy:device:plinthe "Plinthe électrique" {
-
-    }
-    Thing dummy:device:deshumidificateur "Déshumidificateur" {
-    
-    }
-    //Radiator control https://www.openhab.org/addons/bindings/zwave/thing.html?manufacturer=aeotec&file=spirit_0_0.html
-
+Thing http:url:ampoule "Ampoule intelligence simulée" [
+    baseURL="http://localhost:3000/appareils/2",
+    //headers="key1=value1", "key2=value2", "key3=value3",
+    refresh=300] {
+        Channels:
+         Type string : text "luminositeSensor" [ stateTransformation="JSONPATH:$.luminositeSensor" ]
 }
+
+
+
+//Radiator control https://www.openhab.org/addons/bindings/zwave/thing.html?manufacturer=aeotec&file=spirit_0_0.html
+
 

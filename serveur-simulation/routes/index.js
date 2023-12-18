@@ -1,8 +1,8 @@
 const express = require('express');
 const router = express.Router();
 
-const Plinthe = require('../Plinthe.js');
-const Deshumidicateur = require('../Deshumidificateur.js');
+//const Plinthe = require('../appareils/Plinthe.js');
+//const Deshumidicateur = require('../appareils/Deshumidificateur.js');
 
 /* GET home page. */
 router.get('/', function (req, res, next) {
