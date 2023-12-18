@@ -16,5 +16,8 @@ Switch bulb1 "Lumière 1" <switch>
 
 String MyItem "MyItem" {channel="http:url:foo:text"}
 
+String temperaturePlinthe "temperaturePlinthe" {channel="http:url:plinthe:text"}
+String humidite "humidite" {channel="http:url:deshumidificateur:text"}
+
 Number SliderItem "Slider Item"
 

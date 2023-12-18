@@ -43,10 +43,27 @@ Bridge zwave:serial_zstick:controller "Z-Wave Serial Controller" [
 Thing http:url:foo "Foo" [
     baseURL="https://c12d8ac0-c2e4-498e-9922-de32cb19812f.mock.pstmn.io/",
     headers="key1=value1", "key2=value2", "key3=value3",
-    refresh=15] {
+    refresh=5000] {
         Channels:
          Type string : text "Text" [ stateTransformation="JSONPATH:$.message" ]
 }
+
+Thing http:url:plinthe "Plinthe" [
+    baseURL="http://localhost:3000/appareils/0",
+    //headers="key1=value1", "key2=value2", "key3=value3",
+    refresh=300] {
+        Channels:
+         Type string : text "actualTemperature" [ stateTransformation="JSONPATH:$.actualTemperature" ]
+}
+
+Thing http:url:deshumidificateur "Déshumidificateur" [
+    baseURL="http://localhost:3000/appareils/1",
+    //headers="key1=value1", "key2=value2", "key3=value3",
+    refresh=300] {
+        Channels:
+         Type string : text "niveauHumidite" [ stateTransformation="JSONPATH:$.niveauHumidite" ]
+}
+
 
 //OBJETS SIMULÉS
 Bridge dummy:bridge:myDummyBridge "Dummy Bridge"{

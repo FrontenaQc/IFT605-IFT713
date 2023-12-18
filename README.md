@@ -12,6 +12,13 @@
 - git remote add origin https://github.com/FrontenaQc/IFT605-IFT713.git
 - git pull origin main
 
+**Serveur**
+- Le serveur nodejs est dans le dossier simulation-serveur
+- Nous simulons des appareils (Plinthe 0, Déshumidificateur 1)
+- Routes http:localhost:3000/appareils       /appareils/:id
+- npm install
+- npm start
+- Ctrl + c
 
 **InfluxDB**
 - Installer InfluxDB https://docs.influxdata.com/influxdb/v2/get-started/setup/
