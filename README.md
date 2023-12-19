@@ -16,6 +16,7 @@
 **OpenHAB**
 - .\start.bat sur windows
 - log:tail pour voir le log
+- Must install those bindings: zwave, http, jsontransform
 
 **Serveur NodeJS**
 - Le serveur nodejs est dans le dossier simulation-serveur

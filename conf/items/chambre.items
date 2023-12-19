@@ -4,20 +4,25 @@
 
 
 //VRAI MATÉRIEL
-Dimmer dimmer1 {channel="zwave:ge_35931_00_000:controller:bulb1:switch_dimmer"} //Catégorie: DimmableLight
-Dimmer dimmer2 {channel="zwave:ge_14280_00_000:controller:smart_dimmer:switch_dimmer"}
+Dimmer smartLightBulbDimmer "Enbrighten Light [%d %%]" <light> {channel="zwave:ge_35931_00_000:controller:smartBulb:smartLightBulbDimmer"} //Catégorie: DimmableLight
+Dimmer dimmer2 <light> {channel="zwave:ge_14280_00_000:controller:smart_dimmer:switch_dimmer"}
 
-Number BatteryLevelItem "Battery Level [%d %%]" {channel="zwave:elexa_dmms1_00_000:controller:motionLightSensor:battery-level"}
+//Motion and Light sensor
+Number BatteryLevelItem "Battery Level [%d %%]" <battery> {channel="zwave:elexa_dmms1_00_000:controller:motionLightSensor:battery-level"}
+Switch motionSensor <motion> {channel="zwave:elexa_dmms1_00_000:controller:motionLightSensor:motionSensor"}
 
 
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //MATÉRIEL SIMULÉ
 Switch bulb1 "Lumière 1" <switch>
 Number SliderItem "Slider Item"
 
 //Via http binding (matériel simulé via le serveur nodejs)
-String temperaturePlinthe "temperaturePlinthe" {channel="http:url:plinthe:text"}
-String humidite "humidite" {channel="http:url:deshumidificateur:text"}
+String CurrentTemperature "temperaturePlinthe" <temperature> {channel="http:url:plinthe:text"}
+String CurrentHumidity "humidite" <humidity> {channel="http:url:deshumidificateur:text"}
+Number DesiredTemperature "Desired Temperature [%.1f °C]" <temperature> // Add appropriate channel or binding configuration
+Number DesiredHumidity "Desired Humidity [%.1f %%]" <humidity> // Add appropriate channel or binding configuration
 String luminositeSensor "luminositeSensor" {channel="http:url:ampoule:text"}
-
+Switch ampouleSwitch "ampouleSwitch" {channel="http:url:ampoule:power"}
 
 

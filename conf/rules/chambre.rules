@@ -1,0 +1,39 @@
+
+
+
+rule "Turn on light on motion and turn off after no motion"
+when
+    Item motionSensor changed to ON
+then
+    smartLightBulbDimmer.sendCommand(100) // Turn on the light bulb to full brightness
+
+    // Schedule turning off after 1 minute if no other motion is detected
+    createTimer(now.plusMinutes(1), [ |
+        if (motionSensor.state == OFF) {
+            smartLightBulbDimmer.sendCommand(0) // Turn off the light
+        }
+    ])
+end
+
+
+
+
+
+
+
+
+//À revoir, je n'ai pas implanté le post du côté du serveur. 
+//rule "Control Virtual Lightbulb"
+//when
+//    Item VirtualLightbulb received command
+//then
+//    val apiUrl = "http://localhost:3000/appreils/2"
+//    val commandJson = if(receivedCommand == ON) '{"isOn":true}' else '{"isOn":false}'
+//
+//    try {
+//        val response = sendHttpPostRequest(apiUrl, "application/json", commandJson)
+//        logInfo("VirtualLightbulb", "Lightbulb state changed: " + response)
+//    } catch(Exception e) {
+//        logError("VirtualLightbulb", "Error controlling lightbulb: " + e.toString())
+//    }
+//end

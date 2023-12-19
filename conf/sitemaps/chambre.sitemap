@@ -3,4 +3,17 @@ sitemap chambre label="Chambre intelligente" {
         Slider item=SliderItem label="Adjust Value" minValue=0 maxValue=100 step=1
         Text item=SliderItem label="Selected Value [%d]"
     }
+    Frame label="Motion and Smart Light"{
+        Slider item=smartLightBulbDimmer label="Living Room Light Brightness [%d %%]"
+        Switch item=smartLightBulbDimmer label="Living Room Light Switch"
+        Text item=motionSensor label="Entrance Motion Sensor [MAP(motion.map):%s]"
+    }
+    Frame label="Chauffage"{
+        Text item=CurrentTemperature label="Temperature de la pièce[%s °C]"
+        Setpoint item=DesiredTemperature label="Set Temperature [%.1f °C]" minValue=15 maxValue=30 step=0.5
+    }
+    Frame label="Humidité"{
+        Text item=CurrentHumidity label="Humidité de la pièce [%s %%]"
+        Setpoint item=DesiredHumidity label="Set Humidity [%.1f %%]" minValue=30 maxValue=70 step=1
+    }
 }
